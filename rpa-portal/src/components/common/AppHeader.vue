@@ -1,9 +1,13 @@
 <template>
     <header class="header">
-        <div class="title">
-            <h2>RPA Automation Hub</h2>
+        <div class="left-area">
+            <el-button text class="collapse-btn" @click="emit('toggle-sidebar')"> ☰ </el-button>
 
-            <span> Enterprise Digital Solutions </span>
+            <div class="title">
+                <h2>RPA Automation Hub</h2>
+
+                <span> Enterprise Digital Solutions </span>
+            </div>
         </div>
 
         <div class="actions">
@@ -26,7 +30,7 @@
 <script setup>
 import { useRouter } from 'vue-router'
 import { ref } from 'vue'
-
+const emit = defineEmits(['toggle-sidebar'])
 const userName = ref('Guest')
 const router = useRouter()
 const currentUser = localStorage.getItem('currentUser')
@@ -62,6 +66,22 @@ function copyEmail() {
 }
 </script>
 <style scoped>
+.left-area {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+.collapse-btn {
+    font-size: 20px;
+
+    color: #374151;
+}
+
+.collapse-btn:hover {
+    color: #2563eb;
+}
 .header {
     height: 64px;
     background: white;

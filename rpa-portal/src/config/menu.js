@@ -12,27 +12,27 @@ export const mainMenu = [
 
     {
         name: "Home",
-        path: "/",
+        path: "/Home",
         icon: Home
     },
 
-    {
-        name: "Applications",
-        path: "/applications",
-        icon: Package
-    },
+    // {
+    //     name: "Applications",
+    //     path: "/applications",
+    //     icon: Package
+    // },
 
-    {
-        name: "Favorites",
-        path: "/favorites",
-        icon: Star
-    },
+    // {
+    //     name: "Favorites",
+    //     path: "/favorites",
+    //     icon: Star
+    // },
 
-    {
-        name: "Recent",
-        path: "/recent",
-        icon: Clock
-    }
+    // {
+    //     name: "Recent",
+    //     path: "/recent",
+    //     icon: Clock
+    // }
 
 ];
 

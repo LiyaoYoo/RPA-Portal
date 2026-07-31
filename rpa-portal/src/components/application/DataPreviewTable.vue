@@ -18,17 +18,26 @@
         <div class="summary">
             <div class="summary-card">
                 <span>Total</span>
-                <strong>{{ tableData.length }}</strong>
+
+                <strong>
+                    {{ tableData.length }}
+                </strong>
             </div>
 
             <div class="summary-card success">
                 <span>Success</span>
-                <strong>{{ successCount }}</strong>
+
+                <strong>
+                    {{ successCount }}
+                </strong>
             </div>
 
             <div class="summary-card error">
                 <span>Error</span>
-                <strong>{{ errorCount }}</strong>
+
+                <strong>
+                    {{ errorCount }}
+                </strong>
             </div>
         </div>
 
@@ -46,9 +55,11 @@
 
         <!-- Table -->
 
-        <el-table :data="filteredData" stripe border class="mra-table">
-            <el-table-column v-for="column in props.columns" :key="column" :prop="column" :label="formatHeader(column)" />
-        </el-table>
+        <div class="table-container">
+            <el-table :data="filteredData" stripe border class="mra-table" height="500">
+                <el-table-column v-for="column in props.columns" :key="column" :prop="column" :label="formatHeader(column)" width="160" />
+            </el-table>
+        </div>
     </div>
 </template>
 <script setup>
@@ -126,18 +137,14 @@ function downloadExcel() {
 }
 </script>
 <style>
-.preview-card {
-    margin-top: 24px;
+.mra-table {
+    width: 100%;
 
-    background: white;
+    min-width: 1200px;
 
-    border-radius: 18px;
+    border-radius: 12px;
 
-    padding: 30px;
-
-    border: 1px solid #e5e7eb;
-
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
 }
 
 .table-header {
@@ -220,12 +227,6 @@ function downloadExcel() {
     width: 150px;
 }
 
-.mra-table {
-    border-radius: 12px;
-
-    overflow: hidden;
-}
-
 /* 表头 */
 
 :deep(.el-table th) {
@@ -246,5 +247,47 @@ function downloadExcel() {
 
 :deep(.el-table--striped .el-table__body tr.el-table__row--striped td) {
     background: #fafafa;
+}
+
+.preview-card {
+    margin-top: 24px;
+
+    background: white;
+
+    border-radius: 18px;
+
+    padding: 30px;
+
+    border: 1px solid #e5e7eb;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+
+    /*
+        防止内容撑开父元素
+    */
+    width: 100%;
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+}
+
+/*
+    Table 外层容器
+
+    负责滚动
+
+*/
+
+.table-container {
+    width: 100%;
+
+    max-width: 100%;
+
+    overflow-x: auto;
+
+    overflow-y: hidden;
+
+    min-width: 0;
 }
 </style>

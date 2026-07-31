@@ -64,7 +64,7 @@
                         </div>
                     </div>
 
-                    <RouterLink :to="app.route" class="open-btn"> Open → </RouterLink>
+                    <RouterLink :to="app.route" class="open-btn" @click="$emit('hide-sidebar')"> Open → </RouterLink>
                 </div>
             </div>
         </section>
@@ -75,6 +75,8 @@
 import { ref, computed } from 'vue'
 
 import { applications } from '../config/applications'
+
+const emit = defineEmits(['hide-sidebar'])
 
 const search = ref('')
 

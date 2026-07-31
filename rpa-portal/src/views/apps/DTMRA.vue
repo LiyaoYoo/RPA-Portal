@@ -447,11 +447,16 @@ function stopTimer() {
 .page {
     width: 100%;
 
+    max-width: 100%;
+
     padding: 0 32px;
 
     box-sizing: border-box;
-}
 
+    overflow: hidden;
+
+    min-width: 0;
+}
 /*
     Console 和 Preview 动态显示时
     增加顶部间距

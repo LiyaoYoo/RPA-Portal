@@ -1,42 +1,97 @@
 <template>
-    <aside class="sidebar">
+    <aside class="sidebar" :class="{ collapsed }">
         <!-- Brand -->
+
         <div class="brand">
-            <div class="logo">
-                <div class="logo"><span> A </span></div>
-            </div>
-            <div class="brand-text">
+            <div class="logo" @click="handleLogoClick">R</div>
+
+            <div class="brand-text" v-if="!collapsed">
                 <div class="title">Automation Hub</div>
+
                 <div class="subtitle">Enterprise Platform</div>
             </div>
         </div>
+
         <!-- Menu -->
+
         <nav class="menu">
             <RouterLink v-for="item in mainMenu" :key="item.name" :to="item.path" class="menu-item">
-                <component :is="item.icon" class="icon" /> <span> {{ item.name }} </span>
+                <component :is="item.icon" class="icon" />
+
+                <span v-if="!collapsed">
+                    {{ item.name }}
+                </span>
             </RouterLink>
         </nav>
+
         <!-- Bottom -->
+
         <div class="bottom-menu">
             <RouterLink v-for="item in bottomMenu" :key="item.name" :to="item.path" class="menu-item">
-                <component :is="item.icon" class="icon" /> <span> {{ item.name }} </span>
+                <component :is="item.icon" class="icon" />
+
+                <span v-if="!collapsed">
+                    {{ item.name }}
+                </span>
             </RouterLink>
         </div>
     </aside>
 </template>
 <script setup>
 import { mainMenu, bottomMenu } from '../../config/menu.js'
+
+defineProps({
+    collapsed: {
+        type: Boolean,
+        default: false
+    }
+})
+
+const emit = defineEmits(['expand-sidebar'])
+
+function handleLogoClick() {
+    emit('expand-sidebar')
+}
 </script>
 <style scoped>
 .sidebar {
     width: 260px;
+
     height: 100vh;
+
     background: #ffffff;
+
     border-right: 1px solid #e5e7eb;
+
     display: flex;
+
     flex-direction: column;
+
     padding: 20px 16px;
-} /* Brand */
+
+    transition: width 0.25s;
+    flex-shrink: 0;
+
+    transition: width 0.25s ease;
+}
+
+.sidebar.collapsed {
+    width: 72px;
+
+    padding: 20px 12px;
+
+    overflow: hidden;
+}
+.sidebar.collapsed .brand {
+    justify-content: center;
+}
+
+.sidebar.collapsed .menu-item {
+    justify-content: center;
+
+    padding: 0;
+}
+/* Brand */
 .brand {
     display: flex;
     align-items: center;
@@ -45,14 +100,27 @@ import { mainMenu, bottomMenu } from '../../config/menu.js'
 }
 .logo {
     width: 42px;
+
     height: 42px;
+
+    flex-shrink: 0;
+
+    cursor: pointer;
+
     background: linear-gradient(135deg, #2563eb, #38bdf8);
+
     color: white;
+
     border-radius: 12px;
+
     display: flex;
+
     justify-content: center;
+
     align-items: center;
+
     font-size: 22px;
+
     font-weight: 700;
 }
 .brand-text .title {
