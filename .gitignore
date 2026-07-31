@@ -1,0 +1,69 @@
+# =========================
+# Frontend Vue
+# =========================
+
+rpa-portal/node_modules/
+rpa-portal/dist/
+
+# Vite cache
+rpa-portal/.vite/
+
+
+# =========================
+# Backend Python
+# =========================
+
+rpa-backend/__pycache__/
+rpa-backend/*.pyc
+
+# Virtual Environment
+rpa-backend/venv/
+rpa-backend/.venv/
+
+
+# =========================
+# Environment
+# =========================
+
+.env
+*.env
+
+
+# =========================
+# IDE
+# =========================
+
+.vscode/
+.idea/
+
+
+# =========================
+# OS
+# =========================
+
+.DS_Store
+Thumbs.db
+
+
+# =========================
+# Logs
+# =========================
+
+*.log
+
+
+# =========================
+# Temporary files
+# =========================
+
+*.tmp
+*.temp
+
+
+# =========================
+# Office files
+# =========================
+
+*.docx
+*.xlsx
+*.xls
